@@ -1,0 +1,313 @@
+/* Base styles */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 10px;
+}
+
+/* Updated game container for responsiveness */
+.game-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 15px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Game header styling */
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+}
+
+#mine-count,
+#timer {
+  font-family: "Courier New", monospace;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #222;
+  color: #00ff00;
+  padding: 5px 10px;
+  border-radius: 4px;
+  min-width: 50px;
+  text-align: center;
+}
+
+#new-game-button {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#new-game-button:hover {
+  background-color: #45a049;
+}
+
+/* Difficulty selector styling */
+.difficulty-selector {
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.difficulty-selector button {
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #f8f9fa;
+  color: #333;
+  border: 1px solid #dee2e6;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin: 0;
+  border-radius: 4px;
+}
+
+.difficulty-selector button:hover {
+  background-color: #e9ecef;
+  z-index: 1;
+}
+
+.difficulty-selector button.selected {
+  background-color: #0d6efd;
+  color: white;
+  border-color: #0d6efd;
+}
+
+/* Updated responsive game board styling */
+/* Game container needs to be more flexible */
+.game-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* changed from center to stretch */
+}
+
+/* Updated game header styling for better responsiveness */
+.game-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  min-width: 320px; /* Ensure minimum width for small screens */
+}
+
+/* Adjust the spacing of header elements */
+.game-header > * {
+  flex: 0 1 auto; /* Allow elements to shrink but not grow */
+  margin: 0 10px; /* Add consistent spacing */
+}
+
+/* Style counter and timer to maintain size */
+#mine-count,
+#timer {
+  font-family: "Courier New", monospace;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #222;
+  color: #00ff00;
+  padding: 5px 10px;
+  border-radius: 4px;
+  min-width: 70px; /* Increased minimum width */
+  text-align: center;
+}
+
+/* Style new game button */
+#new-game-button {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  min-width: 100px; /* Ensure minimum width */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+/* Create a viewport-aware container for the game board */
+.board-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden; /* Hide scrollbars */
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
+  background-color: #ccc; /* Move background color to container */
+  border-radius: 4px;
+  margin: 15px 0;
+}
+
+/* Make game board fully responsive */
+#game-board {
+  display: grid;
+  gap: 1px;
+  background-color: #ccc;
+  padding: 5px;
+  border-radius: 4px;
+  margin: 0 auto;
+  width: fit-content;
+  touch-action: manipulation; /* Improve touch handling */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  background-color: #ccc;
+  box-sizing: border-box; /* Include padding in size calculations */
+}
+
+/* Updated cell styling for responsiveness */
+.cell {
+  background-color: #eee;
+  border: 1px solid #999;
+  aspect-ratio: 1;
+  min-width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: clamp(12px, 2vw, 16px);
+  user-select: none;
+  box-sizing: border-box; /* Include border in size calculations */
+  margin: 0;
+  padding: 0;
+}
+
+.cell.revealed {
+  background-color: #ddd;
+}
+
+.cell.mine {
+  background-color: #ff0000;
+}
+
+.cell.flagged::before {
+  content: "🚩";
+}
+
+/* Neighbor count colors */
+.cell.neighbors-1 {
+  color: blue;
+}
+.cell.neighbors-2 {
+  color: green;
+}
+.cell.neighbors-3 {
+  color: red;
+}
+.cell.neighbors-4 {
+  color: darkblue;
+}
+.cell.neighbors-5 {
+  color: darkred;
+}
+.cell.neighbors-6 {
+  color: teal;
+}
+.cell.neighbors-7 {
+  color: black;
+}
+.cell.neighbors-8 {
+  color: gray;
+}
+
+/* Leaderboard styling */
+#leaderboard {
+  margin-top: 20px;
+}
+
+#leaderboard h2 {
+  color: #333;
+  text-align: center;
+}
+
+.leaderboard-entries {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+.leaderboard-entry {
+  padding: 8px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.leaderboard-entry:last-child {
+  border-bottom: none;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Enhanced responsive design */
+@media (max-width: 768px) {
+  .game-container {
+    padding: 10px 5px;
+  }
+
+  .game-header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  #game-board {
+    padding: 5px;
+  }
+
+  .cell {
+    min-width: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 5px;
+  }
+
+  .game-container {
+    padding: 5px;
+  }
+
+  .game-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .difficulty-selector {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .difficulty-selector button {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .cell {
+    min-width: 20px;
+  }
+}
